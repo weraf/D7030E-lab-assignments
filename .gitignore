@@ -3,7 +3,6 @@ dev-tests/
 *.trace
 DlRlcStats.trace
 DlPdcpStats.trace
-submission/
 .ns3/
 
 # Build artifacts
