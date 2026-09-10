@@ -1,0 +1,21 @@
+Two-Ray Ground initial distance (di) calculation
+--------------------------------------------------
+Link budget = TxPower - RxSensitivity = 23 dBm - (-92 dBm) = 115 dB
+ 
+Crossover distance (where ns-3 switches from Friis to Two-Ray):
+dc = 4*pi*ht*hr / lambda where lambda = c/f
+   = 4*pi*(1.5)*(1.5) / (2.998e8/5.18e9)
+   ~= 488.5 m
+ 
+Since we expect di > dc, use the Two-Ray far-field formula:
+PL(dB) = 40*log10(d) - 20*log10(ht) - 20*log10(hr)
+ 
+Solving for d:
+di = 10^((115 + 20*log10(1.5*1.5)) / 40)
+   ~= 1124.8 m   (> dc = 488.2 m, so far-field formula is valid)
+ 
+ht = hr = 1.5 m (antenna heights, from Lab1_Cpp_TwoRay.cc default antHeight)
+f = 5.18 GHz, c = 3e8 m/s
+ 
+Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
+D = {1124.8, 984.2, 843.6, 703.0, 562.4, 421.8, 281.2, 140.6}:  (meters)
