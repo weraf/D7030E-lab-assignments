@@ -1,2 +1,0 @@
-Friis initial distance (di) calculation
-----------------------------------------

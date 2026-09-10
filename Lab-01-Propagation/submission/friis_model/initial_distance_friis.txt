@@ -1,0 +1,45 @@
+Friis initial distance (di) calculation
+--------------------------------------------------
+Parameters (from Lab1_Cpp_Friis.cc):
+  TxPower = 23 dBm
+  RxSensitivity = -92 dBm
+  f = 5.18 GHz = 5.18e9 Hz
+  c = 299792458 m/s (exact speed of light, per ns-3 FriisPropagationLossModel docs)
+  Gt = Gr = 1
+  L  = 1 
+
+Step 1 - Link budget (max path loss the link can tolerate):
+  Link budget = TxPower - RxSensitivity
+  Link budget = 23 - (-92) = 115 dB
+
+Step 2 - Wavelength:
+  lambda = c / f
+  lambda = 299792458 / 5.18e9 ~= 0.057875 m
+
+Step 3 - Friis path loss formula (from ns-3 FriisPropagationLossModel docs,
+Pr = Pt*Gt*Gr*lambda^2 / ((4*pi*d)^2 * L), converted to dB with Gt=Gr=L=1):
+  PL(dB) = 20*log10(4*pi*d / lambda)
+
+Step 4 - Set PL = link budget and solve for d:
+  115 = 20*log10(4*pi*d / lambda)
+  5.75 = log10(4*pi*d / lambda)
+  10^5.75 = 4*pi*d / lambda
+  d = 10^5.75 * lambda / (4*pi)
+  d ~= 2589.9 m
+
+Result: di ~= 2589.9 m
+
+Validity check: Friis model requires d > 3*lambda (far-field region).
+3*lambda ~= 0.174 m, and di = 2589.9 m is far beyond this, so the model
+is valid at this distance.
+
+Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
+2589.9, 2266.2, 1942.4, 1618.7, 1294.9, 971.2, 647.5, 323.7  (meters)
+
+--------------------------------------------------
+To run the distances:
+
+distances=(2589.9 2266.2 1942.4 1618.7 1294.9 971.2 647.5 323.7)
+for d in "${distances[@]}"; do
+  scripts/run_cpp.sh Lab-01-Propagation/code/Lab1_Cpp_Friis.cc --distance=$d | grep "^CSV" | tee -a friis_csv_only.txt
+done
