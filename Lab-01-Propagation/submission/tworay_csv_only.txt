@@ -1,8 +1,0 @@
-CSV,model=TwoRay,distance_m=1124.8,rxBytes=0,throughput_bps=0
-CSV,model=TwoRay,distance_m=984.2,rxBytes=0,throughput_bps=0
-CSV,model=TwoRay,distance_m=843.6,rxBytes=0,throughput_bps=0
-CSV,model=TwoRay,distance_m=703,rxBytes=0,throughput_bps=0
-CSV,model=TwoRay,distance_m=562.4,rxBytes=5741380,throughput_bps=5.10345e+06
-CSV,model=TwoRay,distance_m=421.8,rxBytes=5744464,throughput_bps=5.10619e+06
-CSV,model=TwoRay,distance_m=281.2,rxBytes=5748576,throughput_bps=5.10985e+06
-CSV,model=TwoRay,distance_m=140.6,rxBytes=5751660,throughput_bps=5.11259e+06

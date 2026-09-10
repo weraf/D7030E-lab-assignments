@@ -18,4 +18,12 @@ ht = hr = 1.5 m (antenna heights, from Lab1_Cpp_TwoRay.cc default antHeight)
 f = 5.18 GHz, c = 3e8 m/s
  
 Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
-D = {1124.8, 984.2, 843.6, 703.0, 562.4, 421.8, 281.2, 140.6}:  (meters)
+D = {1124.8, 984.2, 843.6, 703.0, 562.4, 421.8, 281.2, 140.6}  (meters)
+
+--------------------------------------------------
+To run the distances:
+
+distances=(1124.8 984.2 843.6 703.0 562.4 421.8 281.2 140.6)
+for d in "${distances[@]}"; do
+  scripts/run_cpp.sh Lab-01-Propagation/code/Lab1_Cpp_TwoRay.cc --distance=$d --antHeight=1.5 | grep "^CSV" | tee -a tworay_csv_only.txt
+done

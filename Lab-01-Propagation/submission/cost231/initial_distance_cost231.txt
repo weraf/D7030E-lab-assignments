@@ -1,0 +1,48 @@
+COST231-Hata initial distance (di) calculation
+--------------------------------------------------
+Parameters (from Lab1_Cpp_Cost231.cc):
+  TxPower = 27 dBm
+  RxSensitivity = -92 dBm
+  f  = 1800 MHz   (must be in MHz for this formula)
+  hb = 15 m       (base station antenna height)
+  hr = 1.5 m      (mobile antenna height)
+  C  = 10 dB      (per lab handout: "C=10")
+
+Step 1 - Link budget (max path loss the link can tolerate):
+  Link budget = TxPower - RxSensitivity
+  Link budget = 27 - (-92) = 119 dB
+
+Step 2 - Mobile antenna height correction factor:
+  a(hr) = (1.1*log10(f) - 0.7)*hr - (1.56*log10(f) - 0.8)
+  a(hr) = (1.1*log10(1800) - 0.7)*1.5 - (1.56*log10(1800) - 0.8) ~= 0.0429
+
+Step 3 - Full COST231-Hata formula:
+  L(dB) = 46.3 + 33.9*log10(f) - 13.82*log10(hb) - a(hr) + [44.9 - 6.55*log10(hb)] * log10(d_km) + C
+
+  L(dB) = 46.3 + 33.9*log10(1800) - 13.82*log10(15) - 0.0429
+          + [44.9 - 6.55*log10(15)] * log10(d_km) + 10
+
+  L(dB) = 46.3 + 110.35 - 16.25 - 0.0429 + [44.9 - 7.70] * log10(d_km) + 10
+
+  L(dB) = 150.36 + 37.20 * log10(d_km)
+
+Step 4 - Set L = link budget and solve for d_km:
+  119 = 150.36 + 37.20 * log10(d_km)
+  -31.36 = 37.20 * log10(d_km)
+  -0.843 = log10(d_km)
+  d_km = 10^(-0.843) ~= 0.1435
+
+Step 5 - Convert to meters (formula's d is in km):
+  di = d_km * 1000
+  di = 0.1435 * 1000 ~= 143.5 m
+
+Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
+D = {143.5, 125.6, 107.7, 89.7, 71.8, 53.8, 35.9, 17.9 } (meters)
+
+--------------------------------------------------
+To run the distances:
+
+distances=(143.5 125.6 107.7 89.7 71.8 53.8 35.9 17.9)
+for d in "${distances[@]}"; do
+  scripts/run_cpp.sh Lab-01-Propagation/code/Lab1_Cpp_Cost231.cc --distance=$d | grep "^CSV" | tee -a cost231_csv_only.txt
+done
