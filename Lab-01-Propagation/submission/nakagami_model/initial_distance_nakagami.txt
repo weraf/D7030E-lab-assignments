@@ -1,0 +1,39 @@
+Nakagami initial distance (di) calculation
+--------------------------------------------------
+Parameters (from Lab1_Cpp_Nakagami.cc):
+  TxPower = 23 dBm
+  RxSensitivity = -92 dBm
+  f = 5.18 GHz (same as Lab1_Cpp_Friis.cc)
+  Nakagami fading: m0 = m1 = m2 = 1.0
+
+Because the underlying large-scale path loss model is Friis, with identical
+parameters (same TxPower, frequency, RxSensitivity) and the Nakagami fading
+has mean 0 dB, the deterministic di is the same as for Friis:
+
+Link budget = TxPower - RxSensitivity
+Link budget = 23 - (-92) = 115 dB
+
+lambda = c / f
+lambda = 299792458 / 5.18e9 ~= 0.057875 m
+
+PL(dB) = 20*log10(4*pi*d / lambda)
+115 = 20*log10(4*pi*d / lambda)
+d = 10^(115/20) * lambda / (4*pi)
+d ~= 2589.9 m
+
+di ~= 2589.9 m
+
+Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
+D = {2589.9, 2266.2, 1942.4, 1618.7, 1294.9, 971.2, 647.5, 323.7} (meters)
+
+--------------------------------------------------
+To run the distances:
+
+distances=(2589.9 2266.2 1942.4 1618.7 1294.9 971.2 647.5 323.7)
+rm -f nakagami_csv_only.txt
+for d in "${distances[@]}"; do
+  for seed in 1 2; do
+    scripts/run_cpp.sh Lab-01-Propagation/code/Lab1_Cpp_Nakagami.cc --distance=$d --RngRun=$seed | grep "^CSV" | tee -a nakagami_csv_only.txt
+  done
+done
+cat nakagami_csv_only.txt
