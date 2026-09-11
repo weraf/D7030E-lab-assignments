@@ -1,41 +1,48 @@
-Friis initial distance (di) calculation
---------------------------------------------------
-Parameters (from Lab1_Cpp_Friis.cc):
-  TxPower = 23 dBm
-  RxSensitivity = -92 dBm
-  f = 5.18 GHz = 5.18e9 Hz
-  c = 299792458 m/s (exact speed of light, per ns-3 FriisPropagationLossModel docs)
-  Gt = Gr = 1
-  L  = 1 
+Initial Distance Calculation - Friis Propagation Model
+=========================================================
 
-Step 1 - Link budget (max path loss the link can tolerate):
-  Link budget = TxPower - RxSensitivity
-  Link budget = 23 - (-92) = 115 dB
+Parameters (from code):
+Pt (TxPowerStart/End)   = 23 dBm
+Gt, Gr (antenna gain)   = 0 dB (not set -> default, linear = 1)
+f (Frequency)           = 5.18 GHz
+RxSensitivity           = -92 dBm
+SystemLoss (L)          = 1 (default)
+MinDistance             = 0.5 m (default, not relevant here since di >> 0.5 m)
+ 
+Step 1: Wavelength
+-------------------
+lambda = c / f = 299792458 / 5.18e9 ≈ 0.057875 m
+ 
+Step 2: Convert power values from dBm to Watts
+-------------------------------------------------
+Formula: P(W) = 10^(P(dBm)/10) / 1000
+ 
+Pt = 10^(23/10) / 1000  ≈ 0.19953 W
+Pr (threshold, = RxSensitivity) = 10^(-92/10) / 1000 ≈ 6.3096e-13 W
+ 
+Step 3: Friis received-power equation (ns-3 implementation)
+---------------------------------------------------------------
+    Pr = (Pt * Gt * Gr * lambda^2) / ((4*pi)^2 * d^2 * L)
+ 
+Solve for d:
+    d_i = lambda * sqrt( (Pt * Gt * Gr) / ((4*pi)^2 * Pr * L) )
+ 
+Step 4: Substitute values
+-----------------------------
+(4*pi)^2 = 16*pi^2 ≈ 157.9137
+ 
+Pt / (16*pi^2 * Pr * L) = 0.19953 / (157.9137 * 6.3096e-13) ≈ 2.00254e9
+ 
+sqrt(2.00254e9) ≈ 44749.7
+ 
+d_i = 0.057875 * 44749.7 ≈ 2589.89 m
 
-Step 2 - Wavelength:
-  lambda = c / f
-  lambda = 299792458 / 5.18e9 ~= 0.057875 m
-
-Step 3 - Friis path loss formula (from ns-3 FriisPropagationLossModel docs,
-Pr = Pt*Gt*Gr*lambda^2 / ((4*pi*d)^2 * L), converted to dB with Gt=Gr=L=1):
-  PL(dB) = 20*log10(4*pi*d / lambda)
-
-Step 4 - Set PL = link budget and solve for d:
-  115 = 20*log10(4*pi*d / lambda)
-  5.75 = log10(4*pi*d / lambda)
-  10^5.75 = 4*pi*d / lambda
-  d = 10^5.75 * lambda / (4*pi)
-  d ~= 2589.9 m
-
-Result: di ~= 2589.9 m
-
-Validity check: Friis model requires d > 3*lambda (far-field region).
-3*lambda ~= 0.174 m, and di = 2589.9 m is far beyond this, so the model
-is valid at this distance.
-
-Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
-2589.9, 2266.2, 1942.4, 1618.7, 1294.9, 971.2, 647.5, 323.7  (meters)
-
+d_i = 2589.89 m
+ 
+Distance set D = { d_i, 7d_i/8, 6d_i/8, 5d_i/8, 4d_i/8, 3d_i/8, 2d_i/8, d_i/8 }
+(step size = d_i/8 ≈ 323.736 m)
+D = {2589.9 2266.2 1942.4 1618.7 1294.9 971.2 647.5 323.7}
+ 
 --------------------------------------------------
 To run the distances:
 

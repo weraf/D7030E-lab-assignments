@@ -1,8 +1,0 @@
-CSV,model=Cost231,distance_m=143.5,rxBytes=0,throughput_bps=0
-CSV,model=Cost231,distance_m=125.6,rxBytes=0,throughput_bps=0
-CSV,model=Cost231,distance_m=107.7,rxBytes=0,throughput_bps=0
-CSV,model=Cost231,distance_m=89.7,rxBytes=0,throughput_bps=0
-CSV,model=Cost231,distance_m=71.8,rxBytes=5752688,throughput_bps=5.1135e+06
-CSV,model=Cost231,distance_m=53.8,rxBytes=5753716,throughput_bps=5.11441e+06
-CSV,model=Cost231,distance_m=35.9,rxBytes=5753716,throughput_bps=5.11441e+06
-CSV,model=Cost231,distance_m=17.9,rxBytes=5754744,throughput_bps=5.11533e+06

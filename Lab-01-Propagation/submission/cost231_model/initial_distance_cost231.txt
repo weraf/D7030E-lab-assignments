@@ -34,15 +34,15 @@ Step 4 - Set L = link budget and solve for d_km:
 
 Step 5 - Convert to meters (formula's d is in km):
   di = d_km * 1000
-  di = 0.1435 * 1000 ~= 143.5 m
+  di = 0.1435 * 1000 ~= 143.51 m
 
 Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
-D = {143.5, 125.6, 107.7, 89.7, 71.8, 53.8, 35.9, 17.9 } (meters)
+D = {143.51, 125.57, 107.63, 89.69, 71.76, 53.82, 35.88, 17.94} (meters)
 
 --------------------------------------------------
 To run the distances:
 
-distances=(143.5 125.6 107.7 89.7 71.8 53.8 35.9 17.9)
+distances=(143.51, 125.57, 107.63, 89.69, 71.76, 53.82, 35.88, 17.94)
 for d in "${distances[@]}"; do
   scripts/run_cpp.sh Lab-01-Propagation/code/Lab1_Cpp_Cost231.cc --distance=$d | grep "^CSV" | tee -a cost231_csv_only.txt
 done
