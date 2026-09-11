@@ -1,29 +1,80 @@
-Two-Ray Ground initial distance (di) calculation
---------------------------------------------------
-Link budget = TxPower - RxSensitivity = 23 dBm - (-92 dBm) = 115 dB
+Initial Distance Calculation - Two-Ray Ground Propagation Model
+=================================================================
  
-Crossover distance (where ns-3 switches from Friis to Two-Ray):
-dc = 4*pi*ht*hr / lambda where lambda = c/f
-   = 4*pi*(1.5)*(1.5) / (2.998e8/5.18e9)
-   ~= 488.5 m
+Source: Lab1_Cpp_TwoRay.cc (ns-3.40, 802.11a IBSS @ 6 Mbps, 5.18 GHz)
  
-Since we expect di > dc, use the Two-Ray far-field formula:
-PL(dB) = 40*log10(d) - 20*log10(ht) - 20*log10(hr)
+Parameters used (from code):
+-----------------------------
+Pt (TxPowerStart/End)   = 23 dBm
+Gt, Gr (antenna gain)   = 0 dB (not set -> default, linear = 1)
+Ht = Hr (antHeight)     = 1.5 m
+f (Frequency)           = 5.18 GHz
+RxSensitivity           = -92 dBm
+SystemLoss (L)          = 1 (default, not set)
+MinDistance             = 1.0 m (not relevant here since di >> 1 m)
  
-Solving for d:
-di = 10^((115 + 20*log10(1.5*1.5)) / 40)
-   ~= 1124.8 m   (> dc = 488.2 m, so far-field formula is valid)
+Step 1: Wavelength
+-------------------
+lambda = c / f = 299792458 / 5.18e9 ≈ 0.057875 m
  
-ht = hr = 1.5 m (antenna heights, from Lab1_Cpp_TwoRay.cc default antHeight)
-f = 5.18 GHz, c = 3e8 m/s
+Step 2: Crossover distance (Friis -> Two-Ray switch point in ns-3)
+--------------------------------------------------------------------
+dCross = (4 * pi * Ht * Hr) / lambda
+       = (4 * pi * 1.5 * 1.5) / 0.057875
+       ≈ 488.5 m
  
-Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
-D = {1124.8, 984.2, 843.6, 703.0, 562.4, 421.8, 281.2, 140.6}  (meters)
+Step 3: Convert power values from dBm to Watts
+-------------------------------------------------
+Formula: P(W) = 10^(P(dBm)/10) / 1000
+ 
+Pt = 10^(23/10) / 1000  ≈ 0.19953 W
+Pr (threshold, = RxSensitivity) = 10^(-92/10) / 1000 ≈ 6.3096e-13 W
+ 
+Step 4: Solve Two-Ray Ground equation for distance
+-----------------------------------------------------
+Two-Ray Ground formula:
+    Pr = (Pt * Gt * Gr * Ht^2 * Hr^2) / (d^4 * L)
+ 
+Solve for d:
+    d^4 = (Pt * Gt * Gr * Ht^2 * Hr^2) / (Pr * L)
+    d   = [ (Pt * Gt * Gr * Ht^2 * Hr^2) / (Pr * L) ]^(1/4)
+ 
+Numerator = Pt * Gt * Gr * Ht^2 * Hr^2
+          = 0.19953 * 1 * 1 * (1.5^2) * (1.5^2)
+          = 0.19953 * 5.0625
+          ≈ 1.0101
+ 
+d^4 = 1.0101 / 6.3096e-13 ≈ 1.6009e12
+ 
+d_i = (1.6009e12)^(1/4) ≈ 1124.841314 m
+ 
+Sanity check: d_i (1124.8 m) > dCross (488.5 m), confirming the point where
+Pr drops to the sensitivity threshold falls in the Two-Ray regime (d > dCross),
+so using the Two-Ray formula (rather than Friis) to solve for d_i was correct.
+ 
+Result: Initial distance
+--------------------------
+d_i = 1124.841314 m
+ 
+Distance set D = { d_i, 7d_i/8, 6d_i/8, 5d_i/8, 4d_i/8, 3d_i/8, 2d_i/8, d_i/8 }
+(step size = d_i/8 = 140.605164 m)
 
+D = {1124.84, 984.24, 843.63,  703.03, 562.42, 421.82, 281.21, 140.61}
+ 
+  d_i       = 1124.841314 m
+  7*d_i/8   =  984.236150 m
+  6*d_i/8   =  843.630986 m
+  5*d_i/8   =  703.025822 m
+  4*d_i/8   =  562.420657 m
+  3*d_i/8   =  421.815493 m
+  2*d_i/8   =  281.210329 m
+  1*d_i/8   =  140.605164 m
+ 
 --------------------------------------------------
 To run the distances:
 
-distances=(1124.8 984.2 843.6 703.0 562.4 421.8 281.2 140.6)
+distances=(1124.84, 984.24, 843.63,  703.03, 562.42, 421.82, 281.21, 140.61)
+> tworay_csv_only.txt  
 for d in "${distances[@]}"; do
   scripts/run_cpp.sh Lab-01-Propagation/code/Lab1_Cpp_TwoRay.cc --distance=$d --antHeight=1.5 | grep "^CSV" | tee -a tworay_csv_only.txt
 done
