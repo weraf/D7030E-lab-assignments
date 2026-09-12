@@ -1,15 +1,18 @@
 # Lab 01 — Propagation Models
 
 Measure how Friis, Two-Ray Ground, COST231-Hata and Nakagami fading change
-throughput with distance, and compare simulated with measured path loss.
+throughput with distance. An additional real-world path-loss measurement is
+available as optional practice.
 
 - **Required work:** [docs/Lab-01-Instructions.md](docs/Lab-01-Instructions.md)
-- **Hand in:** [docs/deliverables.md](docs/deliverables.md)
+- **Include in the Canvas PDF:** [docs/deliverables.md](docs/deliverables.md)
+- **Optional extension:** Part 2 (real-world propagation measurements) is
+  available for additional practice and is not part of the required deliverables
 
 ## Prerequisites
 
-Lab 00 completed (working ns-3.47 build). Environment:
-[docs/environment.md](../docs/environment.md).
+A working ns-3.47 environment is required. The optional Lab 00 setup activity
+can help you verify it. Environment: [docs/environment.md](../docs/environment.md).
 
 ## Files
 
@@ -18,7 +21,7 @@ Lab 00 completed (working ns-3.47 build). Environment:
 | `code/Lab1_Cpp_Friis.cc`, `Lab1_Cpp_TwoRay.cc`, `Lab1_Cpp_Cost231.cc`, `Lab1_Cpp_Nakagami.cc` | One two-node Wi-Fi link per propagation model |
 | [`docs/Lab1_ns-3_propagation.pdf`](docs/Lab1_ns-3_propagation.pdf) | Lab handout |
 | [`docs/background.md`](docs/background.md) | Reference table comparing the four models (background reading) |
-| `submission/` | Put your deliverables here |
+| `submission/` | Optional folder for working files used to prepare the Canvas PDF |
 
 ## Running
 
@@ -46,7 +49,8 @@ CSV,model=Friis,distance_m=100,rxBytes=...,throughput_bps=...
 
 Animation and packet-capture files are written to `$NS3_DIR/scratch/Lab1outputs/`
 (`Lab1_<Model>.xml`, `Lab1_<Model>-*.pcap`). Build your result CSVs from the
-stdout lines and copy the files you need into `submission/` under the names in
-[docs/deliverables.md](docs/deliverables.md).
+stdout lines and keep the files you need in `submission/` under the suggested
+working names in [docs/deliverables.md](docs/deliverables.md). Curate the
+required results from those files into the Canvas PDF.
 
 Problems: [docs/troubleshooting.md](../docs/troubleshooting.md).

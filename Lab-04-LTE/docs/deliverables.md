@@ -1,5 +1,13 @@
 # Lab 04 Deliverables
 
+> **Canvas submission:** Upload one PDF containing a clear, curated compilation
+> of the required results below. Include the relevant calculations, tables,
+> plots, screenshots, and brief explanations in a logical order; an additional
+> extensive report is not expected. The filenames below are helpful for
+> organizing your working files and are not separate Canvas uploads. For binary
+> traces or packet captures, include the relevant observations or screenshots
+> in the PDF rather than the raw file itself.
+
 ## Part 1 – Trace Collection
 
 1. **Simulation trace files**
@@ -92,7 +100,7 @@
 
 ---
 
-## File Naming Summary
+## Suggested Working File Names
 
 * `DlRlcStats.trace`, `DlPdcpStats.trace`, `server_trace.pcap`
 * `antenna_config_comparison.txt`
@@ -103,4 +111,6 @@
 
 ---
 
-**All CSVs must include headers. All plots must include labeled axes and legends. File names must match exactly.**
+**CSV data should include headers, and plots should include labeled axes and
+legends. Use the suggested filenames to keep your working files organized while
+preparing the PDF.**

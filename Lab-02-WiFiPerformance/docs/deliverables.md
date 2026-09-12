@@ -1,5 +1,13 @@
 # Lab 02 Deliverables
 
+> **Canvas submission:** Upload one PDF containing a clear, curated compilation
+> of the required results below. Include the relevant calculations, tables,
+> plots, screenshots, and brief explanations in a logical order; an additional
+> extensive report is not expected. The filenames below are helpful for
+> organizing your working files and are not separate Canvas uploads.
+> Represent working data and animation files with readable tables, plots, or
+> screenshots in the PDF where relevant.
+
 ## Scenario 1 – Application Throughput (Infrastructure WiFi)
 
 1. **Simulation results**
@@ -99,7 +107,7 @@
 
 ---
 
-## File Naming Summary
+## Suggested Working File Names
 
 * `scenario1_results.csv`, `scenario1_plot.png`, `scenario1_anim.xml`, `scenario1_screenshot.png`
 * `payload_sweep_results.csv`, `payload_sweep_plot.png`, `throughput_table.txt`, `packet_time_calc.txt`
@@ -110,4 +118,6 @@
 
 ---
 
-**All CSV files must include a header row. All plots must have labeled axes and legends. File names must match exactly.**
+**CSV data should include a header row, and plots should have labeled axes and
+legends. Use the suggested filenames to keep your working files organized while
+preparing the PDF.**

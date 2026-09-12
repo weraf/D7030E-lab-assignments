@@ -4,12 +4,13 @@ Ad-hoc 802.11b without an access point: throughput over multiple hops, the effec
 of payload size, TCP versus UDP, OLSR versus AODV, and hidden terminals.
 
 - **Required work:** [docs/Lab-03-Instructions.md](docs/Lab-03-Instructions.md)
-- **Hand in:** [docs/deliverables.md](docs/deliverables.md)
+- **Include in the Canvas PDF:** [docs/deliverables.md](docs/deliverables.md)
 
 ## Prerequisites
 
-Lab 00 completed; Lab 02 gives useful context for the hidden-terminal part.
-Environment: [docs/environment.md](../docs/environment.md).
+A working ns-3.47 environment is required; the optional Lab 00 setup activity
+can help you verify it. Lab 02 gives useful context for the hidden-terminal
+part. Environment: [docs/environment.md](../docs/environment.md).
 
 ## Files
 
@@ -21,7 +22,7 @@ Environment: [docs/environment.md](../docs/environment.md).
 | `code/Lab3_Cpp_Hidden.cc` | Part 5 hidden terminal, RTS/CTS off and on |
 | [`docs/Lab3_ns-3_adhoc-1.pdf`](docs/Lab3_ns-3_adhoc-1.pdf), [reference paper](docs/PerformanceComparisonbetweenTCPandUDPProtocolsinDifferentSimulationScenarios.pdf) | Lab handout and reference paper |
 | [`docs/background.md`](docs/background.md) | What each starter does and how throughput is computed (background reading) |
-| `submission/` | Put your deliverables here |
+| `submission/` | Optional folder for working files used to prepare the Canvas PDF |
 
 ## Running
 
@@ -56,7 +57,8 @@ the reported throughput is measured over.
 
 Throughput is printed per flow to stdout. Animation and PCAP files are written
 under `$NS3_DIR/scratch/Lab3outputs/`; a `--csv` file goes to the path you give,
-relative to `$NS3_DIR`. Copy what you need into
-`submission/` under the names in [docs/deliverables.md](docs/deliverables.md).
+relative to `$NS3_DIR`. Keep what you need in `submission/` under the suggested
+working names in [docs/deliverables.md](docs/deliverables.md), then curate the
+required results into the Canvas PDF.
 
 Problems: [docs/troubleshooting.md](../docs/troubleshooting.md).

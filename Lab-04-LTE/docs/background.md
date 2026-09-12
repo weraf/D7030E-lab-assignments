@@ -14,7 +14,7 @@ You’ll spin up a tiny LTE network in ns-3: one base station (eNodeB), one phon
   1. **Throughput vs. data rate** (keep distance fixed; change the app rate).
   2. **Throughput vs. distance** (use **isotropic** antenna; keep app rate fixed; move the UE away). 
 
-# What to hand in
+# Results to Include in the Canvas PDF
 
 See [deliverables.md](deliverables.md).
 

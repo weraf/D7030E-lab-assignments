@@ -70,6 +70,6 @@ The command-line arguments of each starter are listed in the [lab README](../REA
 
 * **FlowMonitor indexing:** Starters assume your main flow is **ID 1**. If you add more apps/flows, don’t hard-index blindly.  
 
-## What to hand in
+## Results to Include in the Canvas PDF
 
 See [deliverables.md](deliverables.md).
