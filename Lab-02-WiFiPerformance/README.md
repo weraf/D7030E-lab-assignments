@@ -4,11 +4,12 @@ Infrastructure 802.11b: how PHY rate, payload size and hidden terminals affect
 throughput, and how a station roams between two access points.
 
 - **Required work:** [docs/Lab-02-Instructions.md](docs/Lab-02-Instructions.md)
-- **Hand in:** [docs/deliverables.md](docs/deliverables.md)
+- **Include in the Canvas PDF:** [docs/deliverables.md](docs/deliverables.md)
 
 ## Prerequisites
 
-Lab 00 completed. Environment: [docs/environment.md](../docs/environment.md).
+A working ns-3.47 environment is required. The optional Lab 00 setup activity
+can help you verify it. Environment: [docs/environment.md](../docs/environment.md).
 
 ## Files
 
@@ -19,7 +20,7 @@ Lab 00 completed. Environment: [docs/environment.md](../docs/environment.md).
 | `code/Lab2_Cpp_Roaming.cc` | Two bridged APs on a CSMA backbone, one moving STA |
 | [`docs/Lab2_ns-3_wifi-1.pdf`](docs/Lab2_ns-3_wifi-1.pdf), [`docs/jayasuriya2004-hidden.pdf`](docs/jayasuriya2004-hidden.pdf) | Lab handout and hidden-terminal paper |
 | [`docs/background.md`](docs/background.md) | What each scenario measures and why (background reading) |
-| `submission/` | Put your deliverables here |
+| `submission/` | Optional folder for working files used to prepare the Canvas PDF |
 
 ## Running
 
@@ -47,8 +48,9 @@ cd "$NS3_DIR"
 Throughput values are printed to stdout. Files land in
 `$NS3_DIR/scratch/Lab2outputs/`: `scenario1_anim.xml`, `scenario2_anim.xml`,
 `roaming_throughput.csv` (`time_s,throughput_bps`) and, with `--enableAnim`,
-`roaming_anim.xml`. Copy what you need into `submission/` under the names in
-[docs/deliverables.md](docs/deliverables.md).
+`roaming_anim.xml`. Keep what you need in `submission/` under the suggested
+working names in [docs/deliverables.md](docs/deliverables.md), then curate the
+required results into the Canvas PDF.
 
 > The payload sweep and hidden-terminal experiments listed in `deliverables.md`
 > have no matching argument in these three programs. Ask a supervisor how to run

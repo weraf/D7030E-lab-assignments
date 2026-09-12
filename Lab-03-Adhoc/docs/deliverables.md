@@ -2,6 +2,14 @@
 
 # Lab 03 Deliverables
 
+> **Canvas submission:** Upload one PDF containing a clear, curated compilation
+> of the required results below. Include the relevant calculations, tables,
+> plots, screenshots, and brief explanations in a logical order; an additional
+> extensive report is not expected. The filenames below are helpful for
+> organizing your working files and are not separate Canvas uploads.
+> Represent working data and animation files with readable tables, plots, or
+> screenshots in the PDF where relevant.
+
 ## Part 1 – Multi-Hop UDP
 
 1. **Simulation results**
@@ -92,7 +100,7 @@
 
 ---
 
-## File Naming Summary
+## Suggested Working File Names
 
 * `udp_chain_results.csv`, `udp_chain_plot.png`, `udp_chain_anim.xml`, `udp_chain_screenshot.png`
 * `payload_sweep_results.csv`, `payload_sweep_plots/hop3.png`, `payload_sweep_plots/hop4.png`, etc.
@@ -102,4 +110,6 @@
 
 ---
 
-**All CSVs must have header rows. All plots must include axis labels and legends. File names must match exactly.**
+**CSV data should include header rows, and plots should include axis labels and
+legends. Use the suggested filenames to keep your working files organized while
+preparing the PDF.**

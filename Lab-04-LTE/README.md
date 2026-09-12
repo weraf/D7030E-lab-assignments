@@ -4,11 +4,12 @@ One eNodeB, one UE and an EPC core: how downlink throughput depends on antenna
 type, offered data rate and distance, and what happens when the UE moves.
 
 - **Required work:** [docs/Lab-04-Instructions.md](docs/Lab-04-Instructions.md)
-- **Hand in:** [docs/deliverables.md](docs/deliverables.md)
+- **Include in the Canvas PDF:** [docs/deliverables.md](docs/deliverables.md)
 
 ## Prerequisites
 
-Lab 00 completed. Environment: [docs/environment.md](../docs/environment.md).
+A working ns-3.47 environment is required. The optional Lab 00 setup activity
+can help you verify it. Environment: [docs/environment.md](../docs/environment.md).
 
 ## Files
 
@@ -17,7 +18,7 @@ Lab 00 completed. Environment: [docs/environment.md](../docs/environment.md).
 | `code/Lab4_Cpp_LTE.cc` | LTE/EPC downlink scenario, all parts of this lab |
 | [`docs/Lab4_ns-3_LTE.pdf`](docs/Lab4_ns-3_LTE.pdf) | Lab handout |
 | [`docs/background.md`](docs/background.md) | What the scenario models and which trace to use (background reading) |
-| `submission/` | Put your deliverables here |
+| `submission/` | Optional folder for working files used to prepare the Canvas PDF |
 
 ## Running
 
@@ -57,8 +58,8 @@ Throughput is printed to stdout. Files are written to
 | `ue_mobile_throughput.csv` | Per-second throughput, written when `--mobility=true` and `--csv` is not given |
 | `Lab4_LTE.xml` | NetAnim trace, written only with `--enableAnim` |
 
-Copy what you need into `submission/` under the names in
-[docs/deliverables.md](docs/deliverables.md). Where a generated file name differs
-from the required one, ask a supervisor rather than guessing.
+Keep what you need in `submission/` under the suggested working names in
+[docs/deliverables.md](docs/deliverables.md), then curate the required results
+into the Canvas PDF.
 
 Problems: [docs/troubleshooting.md](../docs/troubleshooting.md).

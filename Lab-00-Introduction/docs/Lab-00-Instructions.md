@@ -20,6 +20,10 @@ By the end of this lab you will be able to:
 
 See [docs/environment.md](../../docs/environment.md) for detailed installation and build instructions.
 
+> **Optional setup activity:** Lab 00 is provided to help you check your
+> environment and become familiar with the tools before the assessed labs. Its
+> outputs are not part of the required lab deliverables.
+
 ---
 
 ## Part 1: "Hello, Simulator!" in C++
@@ -83,9 +87,10 @@ See [docs/environment.md](../../docs/environment.md) for detailed installation a
 
 ---
 
-## Deliverables
+## Setup Check
 
-See [`deliverables.md`](deliverables.md).
+See the optional local evidence [`checklist`](deliverables.md). These outputs
+are intended for setup verification and are not part of the required lab work.
 
 ---
 

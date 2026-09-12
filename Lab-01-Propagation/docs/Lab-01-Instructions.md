@@ -110,6 +110,10 @@ Notes:
 
 ## Part 2: Real-World Propagation Measurements (**Optional**)
 
+> **Optional extension:** Part 2 is available for additional practical
+> experience and is not part of the required lab work. The filenames below are
+> suggestions for students who choose to complete it.
+
 > **Recommended**: work with a partner and laptops.  If an industrial site is
 > unavailable, a long corridor with metallic fixtures (e.g., a server room
 > hallway) is an acceptable substitute — the key is to observe multipath
@@ -137,7 +141,8 @@ Notes:
 
 ## Deliverables
 
-See [`deliverables.md`](deliverables.md).
+See [`deliverables.md`](deliverables.md). The Part I simulation deliverables are
+required, while Part II is an optional extension.
 
 ---
 

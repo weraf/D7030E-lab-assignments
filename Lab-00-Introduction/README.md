@@ -1,10 +1,11 @@
 # Lab 00 — Introduction to ns-3 and NetAnim
 
-Warm-up lab: confirm your ns-3.47 environment works, run a C++ simulation,
-capture its output, and view a NetAnim animation.
+Optional warm-up lab: confirm your ns-3.47 environment works, run a C++
+simulation, capture its output, and view a NetAnim animation. It is provided as
+preparation for the assessed labs.
 
-- **Required work:** [docs/Lab-00-Instructions.md](docs/Lab-00-Instructions.md)
-- **Hand in:** [docs/deliverables.md](docs/deliverables.md)
+- **Optional setup activity:** [docs/Lab-00-Instructions.md](docs/Lab-00-Instructions.md)
+- **Outputs:** Optional setup-check evidence; not part of the required deliverables
 
 ## Prerequisites
 
@@ -18,7 +19,7 @@ A working ns-3.47 environment and NetAnim — see
 | `code/Lab0_Cpp_Hello.cc` | Minimal "Hello Simulator" program |
 | `code/Lab0_Cpp_Anim.cc` | Two-node program that writes a NetAnim XML |
 | [`docs/Lab0_Introduction_to_ns-3.pdf`](docs/Lab0_Introduction_to_ns-3.pdf) | Lab handout |
-| `submission/` | Put your deliverables here |
+| `submission/` | Optional local folder for the setup-check outputs |
 
 ## Running
 
@@ -41,8 +42,9 @@ It takes no arguments and writes
 
 ## Outputs
 
-Copy the files you need into `submission/` under the names in
-[docs/deliverables.md](docs/deliverables.md), open the XML in NetAnim, and take
-the required screenshot.
+Open the XML in NetAnim to verify that the setup works. If useful, you may keep
+the suggested evidence in `submission/` using the names in the
+[setup checklist](docs/deliverables.md). These optional outputs are for your own
+setup verification rather than the required lab presentation.
 
 Problems: [docs/troubleshooting.md](../docs/troubleshooting.md).
