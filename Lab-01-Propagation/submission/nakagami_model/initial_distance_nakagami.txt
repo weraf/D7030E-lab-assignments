@@ -1,35 +1,32 @@
-Nakagami initial distance (di) calculation
---------------------------------------------------
-Parameters (from Lab1_Cpp_Nakagami.cc):
-  TxPower = 23 dBm
-  RxSensitivity = -92 dBm
-  f = 5.18 GHz (same as Lab1_Cpp_Friis.cc)
-  Nakagami fading: m0 = m1 = m2 = 1.0
+Initial Distance Calculation - Nakagami Fading Model
+=========================================================
 
-Because the underlying large-scale path loss model is Friis, with identical
-parameters (same TxPower, frequency, RxSensitivity) and the Nakagami fading
-has mean 0 dB, the deterministic di is the same as for Friis:
+Parameters used (from code):
+-----------------------------
+Pt (TxPowerStart/End)   = 23 dBm       -> 0.19953 W
+Gt, Gr (antenna gain)   = 0 dB (default, linear = 1)
+f (Frequency)           = 5.18 GHz     -> lambda ≈ 0.057875 m
+RxSensitivity           = -92 dBm      -> 6.3096e-13 W
+SystemLoss (L)          = 1 (default)
+Nakagami m0, m1, m2     = 1.0 
 
-Link budget = TxPower - RxSensitivity
-Link budget = 23 - (-92) = 115 dB
+Formula (Friis received power, solved for d):
+  d_i = lambda * sqrt( (Pt * Gt * Gr) / ((4*pi)^2 * Pr * L) )
 
-lambda = c / f
-lambda = 299792458 / 5.18e9 ~= 0.057875 m
+Substituting values:
+  d_i = 0.057875 * sqrt( 0.19953 / (157.9137 * 6.3096e-13) )
+  d_i = 0.057875 * sqrt(2.00254e9)
+  d_i = 0.057875 * 44749.7
+  d_i ≈ 2589.89 m
 
-PL(dB) = 20*log10(4*pi*d / lambda)
-115 = 20*log10(4*pi*d / lambda)
-d = 10^(115/20) * lambda / (4*pi)
-d ~= 2589.9 m
+Distance set D = { d_i, 7d_i/8, ..., d_i/8 }  (step = d_i/8 ≈ 323.736 m):
+  D = {2589.89, 2266.15, 1942.42, 1618.68, 1294.95, 971.21, 647.47, 323.74} m
 
-di ~= 2589.9 m
-
-Distance set D = {di, 7di/8, 6di/8, ..., di/8}:
-D = {2589.9, 2266.2, 1942.4, 1618.7, 1294.9, 971.2, 647.5, 323.7} (meters)
 
 --------------------------------------------------
 To run the distances:
 
-distances=(2589.9 2266.2 1942.4 1618.7 1294.9 971.2 647.5 323.7)
+distances=(2589.89, 2266.15, 1942.42, 1618.68, 1294.95, 971.21, 647.47, 323.74)
 rm -f nakagami_csv_only.txt
 for d in "${distances[@]}"; do
   for seed in 1 2; do

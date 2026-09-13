@@ -27,20 +27,15 @@ Step 3: Friis received-power equation (ns-3 implementation)
 Solve for d:
     d_i = lambda * sqrt( (Pt * Gt * Gr) / ((4*pi)^2 * Pr * L) )
  
-Step 4: Substitute values
------------------------------
-(4*pi)^2 = 16*pi^2 ≈ 157.9137
- 
-Pt / (16*pi^2 * Pr * L) = 0.19953 / (157.9137 * 6.3096e-13) ≈ 2.00254e9
- 
-sqrt(2.00254e9) ≈ 44749.7
- 
-d_i = 0.057875 * 44749.7 ≈ 2589.89 m
-
-d_i = 2589.89 m
+Substituting values:
+  d_i = 0.057875 * sqrt( 0.19953 / (157.9137 * 6.3096e-13) )
+  d_i = 0.057875 * sqrt(2.00254e9)
+  d_i = 0.057875 * 44749.7
+  d_i ≈ 2589.89 m
  
 Distance set D = { d_i, 7d_i/8, 6d_i/8, 5d_i/8, 4d_i/8, 3d_i/8, 2d_i/8, d_i/8 }
 (step size = d_i/8 ≈ 323.736 m)
+
 D = {2589.9 2266.2 1942.4 1618.7 1294.9 971.2 647.5 323.7}
  
 --------------------------------------------------

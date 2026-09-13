@@ -1,5 +1,5 @@
-COST231-Hata initial distance (di) calculation
---------------------------------------------------
+Initial Distance Calculation - COST231-Hata Model
+=========================================================
 Parameters (from Lab1_Cpp_Cost231.cc):
   TxPower = 27 dBm
   RxSensitivity = -92 dBm
